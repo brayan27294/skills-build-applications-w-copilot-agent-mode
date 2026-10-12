@@ -10,4 +10,5 @@ export async function connectDatabase(): Promise<void> {
 
 db.on('error', console.error.bind(console, 'connection error:'));
 
+
 export default db;
