@@ -1,6 +1,10 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import { Activity, LeaderboardEntry, Team, User, Workout } from './models/index.js';
+import Activity from './models/activity.js';
+import Leaderboard from './models/leaderboard.js';
+import Team from './models/team.js';
+import User from './models/user.js';
+import Workout from './models/workout.js';
 import { connectDatabase } from './config/database.js';
 
 const app = express();
@@ -51,7 +55,7 @@ app.post('/api/activities', async (request, response) => {
 });
 
 app.get('/api/leaderboard', async (_request, response) => {
-  const leaderboard = await LeaderboardEntry.find().populate('user').sort({ rank: 1 }).lean();
+  const leaderboard = await Leaderboard.find().populate('user').sort({ rank: 1 }).lean();
   response.json({ baseUrl, leaderboard });
 });
 

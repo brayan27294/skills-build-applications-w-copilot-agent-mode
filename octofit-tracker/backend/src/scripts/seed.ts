@@ -1,6 +1,10 @@
 import mongoose from 'mongoose';
+import Activity from '../models/activity.js';
+import Leaderboard from '../models/leaderboard.js';
+import Team from '../models/team.js';
+import User from '../models/user.js';
+import Workout from '../models/workout.js';
 import { connectDatabase } from '../config/database.js';
-import { Activity, LeaderboardEntry, Team, User, Workout } from '../models/index.js';
 
 /**
  * Seed the octofit_db database with test data
@@ -13,7 +17,7 @@ async function seedDatabase() {
       User.deleteMany({}),
       Team.deleteMany({}),
       Activity.deleteMany({}),
-      LeaderboardEntry.deleteMany({}),
+      Leaderboard.deleteMany({}),
       Workout.deleteMany({}),
     ]);
 
@@ -77,7 +81,7 @@ async function seedDatabase() {
       },
     ]);
 
-    await LeaderboardEntry.insertMany([
+    await Leaderboard.insertMany([
       {
         rank: 1,
         user: users[0]._id,
